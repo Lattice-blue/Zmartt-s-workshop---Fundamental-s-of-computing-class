@@ -25,6 +25,13 @@ student_scores = [
 ]
 
 # What's the limitation of this structure?
+# 
+# 1. Tuple Immutability and error handling
+# Right off the bat a tuple is immutable so if a name is somehow mispelled when it is initiated in the list
+# then to modify it a new tuple would have to be created and it would need to replace the old occurence
+# It's not so much a problem for the list in the tuple since it doesn't mean the list's contents cannot be modified
+# 
+# What else?
 
 
 # and then print the average, I guess I'll just create a new list of the average of each student

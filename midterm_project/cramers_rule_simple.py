@@ -25,13 +25,7 @@
 # a1x1 + b1y1 = c1 
 # a2x2 + b2y2 = c2
 
-a1 = 2
-b1 = 3
-a2 = 1
-b2 = 4
 
-c1 = 8
-c2 = 9
 
 # expected values:
 # x = 1
@@ -56,19 +50,39 @@ c2 = 9
 # and 
 # y should be 2
  
+# Determinant
 
 def calc_main_determinant(a1, b1, a2, b2):
     return (a1 * b2) - (a2 * b1)
 
-def get_x_deteriminant():
+def calc_x_deteriminant(c1, b1, c2, b2):
+    return (c1 * b2) - (c2 * b1)
 
-    return 
+def calc_y_deteriminant(a1, c1, a2, c2):
+    return (a1 * c2) - (a2 * c1)
 
-def get_y_deteriminant():
+def calc_x(x_determinant, main_determinant):
+    return x_determinant / main_determinant
 
-    return
+def calc_y(y_determinant, main_determiniant):
+    return y_determinant / main_determiniant
 
-def calc_values():
 
-    return
+a1 = 2
+b1 = 3
+a2 = 1
+b2 = 4
 
+c1 = 8
+c2 = 9
+
+main_determinant = calc_main_determinant(a1, b1, a2, b2)
+x_determinant = calc_x_deteriminant(c1, b1, c2, b2)
+y_determinant = calc_y_deteriminant(a1, c1, a2, c2)
+
+x = calc_x(x_determinant, main_determinant)
+y = calc_y(y_determinant, main_determinant)
+
+print(f"main determinant = {main_determinant}, x determinant = {x_determinant}, y determinant = {y_determinant}")
+
+print(f"x = {x}, and y = {y}")

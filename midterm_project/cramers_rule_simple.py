@@ -5,9 +5,9 @@
 # 
 # The beginning, it starts with figuring out what values satisfy two linear equations. 
 # 
-#
-#
-#
+# This is starting to get fun
+# I understand it now
+
 
 
 
@@ -17,4 +17,20 @@
 
 
 # !!! ONLY COPY THE STUFF UNDERNEATH THIS COMMENT
+
+def calc_main_determinant(a1, b1, ):
+    
+    return 
+
+def get_x_deteriminant():
+
+    return 
+
+def get_y_deteriminant():
+
+    return
+
+def calc_values():
+
+    return
 

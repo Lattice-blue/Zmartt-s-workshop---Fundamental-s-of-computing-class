@@ -25,6 +25,14 @@
 # a1x1 + b1y1 = c1 
 # a2x2 + b2y2 = c2
 
+a1 = 2
+b1 = 3
+a2 = 1
+b2 = 4
+
+c1 = 8
+c2 = 9
+
 # expected values:
 # x = 1
 # y = 2
@@ -49,9 +57,8 @@
 # y should be 2
  
 
-def calc_main_determinant(a1, b1, ):
-    
-    return 
+def calc_main_determinant(a1, b1, a2, b2):
+    return (a1 * b2) - (a2 * b1)
 
 def get_x_deteriminant():
 

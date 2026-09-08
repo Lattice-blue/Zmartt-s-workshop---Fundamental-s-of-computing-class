@@ -18,6 +18,37 @@
 
 # !!! ONLY COPY THE STUFF UNDERNEATH THIS COMMENT
 
+# Sample equations:
+# 2x + 3y = 8
+# 1x + 4y = 9
+
+# a1x1 + b1y1 = c1 
+# a2x2 + b2y2 = c2
+
+# expected values:
+# x = 1
+# y = 2
+
+# Main deteriminant
+# D = |a1 b1|
+#     |a2 b2|
+#
+# x-determinant
+# Dx = |c1  b1|
+#      |c2  b2|
+#
+# y-determinant
+# Dy = |a1 c1|
+#      |a2 c2|
+
+# x = Dx / D 
+# y = Dy / D
+
+# x should be 1
+# and 
+# y should be 2
+ 
+
 def calc_main_determinant(a1, b1, ):
     
     return 

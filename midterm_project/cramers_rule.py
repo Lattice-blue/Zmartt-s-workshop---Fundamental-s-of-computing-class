@@ -9,4 +9,12 @@
 #
 #
 
+
+
+# TODO: Implement core logic for cramer's rule
+
+# TODO: Implement GUI that uses the core logic for cramer's rule
+
+
 # !!! ONLY COPY THE STUFF UNDERNEATH THIS COMMENT
+

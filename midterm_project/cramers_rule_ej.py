@@ -35,7 +35,7 @@ if __name__ == "__main__":
     
     solution, D, Dx, Dy = solve_cramer_2x2(a1, b1, c1, a2, b2, c2)
     
-    print("Determinants:")
+    print("\n--- Computation Telemetry ---")
     print(f"Main Determinant (D)  = {D:.4f}")
     print(f"X Determinant (Dx)    = {Dx:.4f}")
     print(f"Y Determinant (Dy)    = {Dy:.4f}")

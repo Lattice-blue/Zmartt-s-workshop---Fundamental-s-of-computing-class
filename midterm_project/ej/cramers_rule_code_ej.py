@@ -22,7 +22,7 @@ def solve(a1, b1, c1, a2, b2, c2):
     print(f"x = {x:.4f}")
     print(f"y = {y:.4f}")
 
-# --- Main Inputs ---
+# Ask user for the values
 print("Enter Equation 1 (a1*x + b1*y = c1):")
 a1 = float(input("a1: "))
 b1 = float(input("b1: "))

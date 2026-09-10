@@ -67,6 +67,7 @@ def func(x):
 
 # ASKS for the initial intervals
 # NOTE: Use a graph to find the initial values visually
+# TODO: Change the print to be dynamic
 
 print("Enter interval vales for f(x) = x^3 - x -2")
 a = int(input("a: "))

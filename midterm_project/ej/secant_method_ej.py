@@ -1,57 +1,56 @@
-# The function to solve: f(x) = x^3 - 2x + 2
-# Note: No derivative function needed for the Secant Method!
-def f(x):
-    return x**3 - 2 * x + 2
+# Solving an equation using the Secant Method
+# Equation: f(x) = x^3 - 8x + 2
+#
+# Starting points to try:
+# first  = 2.0  ->  f(2.0) = -6.0
+# second = 3.0  ->  f(3.0) =  5.0
+# Expected root is around 2.7052
 
+def compute_y(x):
+    return (x ** 3) - (8 * x) + 2
 
-def secant(x0, x1, tol):
-    iteration = 0
-    max_iter = 100
+def approximate_root(first, second, limit_error):
+    count = 0
 
-    # Print table header
-    print("\nIter  | x0         | x1         | f(x1)        | x_next")
-    print("-" * 55)
+    # Keep looping until the y-value is close enough to zero
+    while abs(compute_y(second)) > limit_error:
+        count = count + 1
 
-    # Keep looping until f(x1) is close enough to 0
-    while abs(f(x1)) > tol:
-        iteration = iteration + 1
-
-        # Stop if it takes too many steps
-        if iteration > max_iter:
-            print("Error: Did not converge within 100 steps.")
+        # Stop if it runs too many times
+        if count > 50:
+            print("Stopped: Did not find root within 50 tries.")
             return None
 
-        # Calculate difference in y (rise)
-        delta_y = f(x1) - f(x0)
+        y_first = compute_y(first)
+        y_second = compute_y(second)
 
-        # Avoid division by zero if both points have the same y-value (flat line)
-        if delta_y == 0:
-            print("Error: Division by zero! Secant line is horizontal.")
+        # Difference in height (cannot divide by zero)
+        y_difference = y_second - y_first
+        if y_difference == 0:
+            print("Error: Y-values are identical, cannot divide by zero.")
             return None
 
         # Secant formula
-        x_next = x1 - (f(x1) * (x1 - x0)) / delta_y
+        next_val = second - (y_second * (second - first)) / y_difference
 
-        print(
-            f"{iteration:<5} | {x0:<10.4f} | {x1:<10.4f} | {f(x1):<12.4f} | {x_next:<10.4f}"
-        )
+        print("Attempt", count, ": new guess =", round(next_val, 4), "| f(x) =", round(compute_y(next_val), 5))
 
-        # Shift values forward for the next round
-        x0 = x1
-        x1 = x_next
+        # Move the points forward
+        first = second
+        second = next_val
 
-    return x1
+    return second
 
 
-# --- Main Program ---
-print("Secant Method for f(x) = x^3 - 2*x + 2")
-x0 = float(input("Enter first guess (x0):  "))
-x1 = float(input("Enter second guess (x1): "))
-tolerance = 0.0001
+# User inputs
+print("Finding root for: x^3 - 8x + 2 = 0")
+p0 = float(input("Enter first start number (try 2.0): "))
+p1 = float(input("Enter second start number (try 3.0): "))
+tol = 0.0001
 
-root = secant(x0, x1, tolerance)
+ans = approximate_root(p0, p1, tol)
 
-if root is not None:
-    print("-" * 55)
-    print(f"The root is approximately: {root:.4f}")
-    print(f"Check f(root): {f(root):.6f}")
+if ans is not None:
+    print("\nResult:")
+    print("Estimated root =", round(ans, 4))
+    print("Check compute_y(root) =", round(compute_y(ans), 6))

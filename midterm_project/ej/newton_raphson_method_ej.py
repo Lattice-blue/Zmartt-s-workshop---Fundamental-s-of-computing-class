@@ -1,59 +1,60 @@
-# The function: f(x) = x^3 - x - 2
-def f(x):
-    return x**3 - x - 2
+# Program to find a root using Newton's Method
+# Equation: f(x) = x^3 - 2x - 5
+# Derivative: f'(x) = 3x^2 - 2
+#
+# Good initial guess to try: 2
+# Expected root is around 2.0946
 
+# The main equation
+def equation(x):
+    return x**3 - 2*x - 5
 
-# The derivative (slope): f'(x) = 3x^2 - 1
-def df(x):
-    return 3 * (x**2) - 1
+# The derivative of the equation
+def derivative(x):
+    return 3 * (x**2) - 2
 
+# Newton's method solver
+def solve_newton(guess, tolerance):
+    x = guess
+    count = 0
+    max_steps = 50
 
-def newton_raphson(x0, tol):
-    x = x0
-    iteration = 0
-    max_iter = 100
+    # Keep looping while f(x) is not close enough to 0
+    while abs(equation(x)) > tolerance:
+        count = count + 1
 
-    # Print table header
-    print("\nIter  | x_current    | f(x)         | f'(x)        | x_next")
-    print("-" * 60)
-
-    # Keep looping until f(x) is close enough to 0
-    while abs(f(x)) > tol:
-        iteration = iteration + 1
-
-        # Stop if it takes too many steps
-        if iteration > max_iter:
-            print("Error: Could not find a root within 100 steps.")
+        # Stop if taking too long
+        if count > max_steps:
+            print("Did not converge after", max_steps, "steps. Try a different guess.")
             return None
 
-        slope = df(x)
+        slope = derivative(x)
 
-        # Avoid division by zero if the tangent line is flat
+        # Check for division by zero
         if slope == 0:
-            print("Error: Slope is zero! Tangent line is completely flat.")
+            print("Error: Slope is 0. Cannot divide by zero.")
             return None
 
-        # Newton-Raphson formula: x_next = x - f(x) / f'(x)
-        x_next = x - (f(x) / slope)
+        # Newton's formula: next_x = x - (f(x) / f'(x))
+        next_x = x - (equation(x) / slope)
 
-        print(
-            f"{iteration:<5} | {x:<12.4f} | {f(x):<12.4f} | {slope:<12.4f} | {x_next:<12.4f}"
-        )
+        print("Step", count, ": current x =", round(x, 4), "| next x =", round(next_x, 4))
 
-        # Move to the next point
-        x = x_next
+        # Update x for the next round
+        x = next_x
 
     return x
 
 
-# --- Main Program ---
-print("Newton-Raphson Method for f(x) = x^3 - x - 2")
-x0 = float(input("Enter initial guess (x0): "))
-tolerance = 0.0001
+# Get user input
+print("Newton's Method for f(x) = x^3 - 2x - 5")
+start_guess = float(input("Enter starting guess (e.g., 2): "))
+tol = 0.0001
 
-root = newton_raphson(x0, tolerance)
+# Calculate
+answer = solve_newton(start_guess, tol)
 
-if root is not None:
-    print("-" * 60)
-    print(f"The root is approximately: {root:.4f}")
-    print(f"Check f(root): {f(root):.6f}")
+# Show result
+if answer is not None:
+    print("\nThe approximate root is:", round(answer, 4))
+    print("Checking f(root):", round(equation(answer), 6))

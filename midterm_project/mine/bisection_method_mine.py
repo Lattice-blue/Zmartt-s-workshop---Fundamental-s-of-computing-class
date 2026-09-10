@@ -63,7 +63,8 @@ def bisection(f, a, b, tolerance):
 
 def func(x):
     # return x**3 - x - 2
-    return 5 - x**3
+    # return 5 - x**3
+    return x**3 - 2*x + 2
 
 # ASKS for the initial intervals
 # NOTE: Use a graph to find the initial values visually
